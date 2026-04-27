@@ -5,18 +5,7 @@
 </div>
 
 \
-This is the code used in the paper [PatchAttack: A Black-box Texture-based Attack with Reinforcement Learning](https://arxiv.org/abs/2004.05682).
-
-If you use the code or find this project helpful, please consider citing our paper.
-
-```
-@article{yang2020patchattack,
-  title={PatchAttack: A Black-box Texture-based Attack with Reinforcement Learning},
-  author={Yang, Chenglin and Kortylewski, Adam and Xie, Cihang and Cao, Yinzhi and Yuille, Alan},
-  journal={arXiv preprint arXiv:2004.05682},
-  year={2020}
-}
-```
+This is the code used in the paper [PatchAttack: A Black-box Texture-based Attack with Reinforcement Learning](https://arxiv.org/abs/2004.05682) by Chenglin Yang, Adam Kortylewski, Cihang Xie, Yinzhi Cao, and Alan Yuille (2020). This GitHub repository is mainly sourced from their respective [GitHub repository](https://github.com/Chenglin-Yang/PatchAttack).
 
 ## Requirements
 + python 3.6
