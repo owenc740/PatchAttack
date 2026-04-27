@@ -3,6 +3,8 @@ TextureDict_ImageNet_0/
 TextureDict_ImageNet_1/
 TextureDict_ImageNet_0.zip
 TextureDict_ImageNet_1.zip
+AdvPatchDict_ImageNet/
+AdvPatchDict_ImageNet.zip
 PatchAttack_result/
 __pycache__/
 *.pyc

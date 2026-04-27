@@ -441,8 +441,8 @@ class AP():
             temp_input = input_tensor
             temp_mask = mask.unsqueeze(0)
             temp_patch = patch.unsqueeze(0)
-            mask_warpped = kornia.translate(temp_mask.float(), translation=translate_tensor)
-            patch_warpped = kornia.translate(temp_patch.float(), translation=translate_tensor)
+            mask_warpped = kornia.geometry.transform.translate(temp_mask.float(), translation=translate_tensor)
+            patch_warpped = kornia.geometry.transform.translate(temp_patch.float(), translation=translate_tensor)
             overlay = temp_input * (1 - mask_warpped) + patch_warpped * mask_warpped
             print('Previous result loaded:')
         else:
@@ -470,8 +470,8 @@ class AP():
             temp_mask = mask.unsqueeze(0)
             temp_patch = patch.unsqueeze(0)
 
-            mask_warpped = kornia.translate(temp_mask.float(), translation=translate_tensor)
-            patch_warpped = kornia.translate(temp_patch.float(), translation=translate_tensor)
+            mask_warpped = kornia.geometry.transform.translate(temp_mask.float(), translation=translate_tensor)
+            patch_warpped = kornia.geometry.transform.translate(temp_patch.float(), translation=translate_tensor)
                 
             # overlay
             overlay = temp_input * (1 - mask_warpped) + patch_warpped * mask_warpped

@@ -634,34 +634,36 @@ class MPA_agent(robot):
                 
                 # update non-target records
                 wrong_filter = ~filters[0]
+                wrong_filter_cpu = wrong_filter.cpu()
                 if acc[0] != 1:
                     if distributed_area:
-                        area_candidate = area[:, -1][wrong_filter]
+                        area_candidate = area[:, -1][wrong_filter_cpu]
                     else:
-                        area_candidate = area[wrong_filter]
+                        area_candidate = area[wrong_filter_cpu]
                     temp_floating_area, temp = area_candidate.min(dim=0)
                     if temp_floating_area < floating_area:
-                        floating_mask = mask[wrong_filter][temp].squeeze(0)
-                        floating_combo = combo[wrong_filter][temp]
+                        floating_mask = mask[wrong_filter_cpu][temp].squeeze(0)
+                        floating_combo = combo[wrong_filter_cpu][temp]
                         floating_area = temp_floating_area
                         if self.color:
-                            floating_RGB_painting = RGB_painting[wrong_filter][temp]
+                            floating_RGB_painting = RGB_painting[wrong_filter_cpu][temp]
                 
                 # update target records
                 if t_atk:
                     if acc[1] != 0:
                         target_filter = filters[1]
+                        target_filter_cpu = target_filter.cpu()
                         if distributed_area:
-                            area_candidate = area[:, -1][target_filter]
+                            area_candidate = area[:, -1][target_filter_cpu]
                         else:
-                            area_candidate = area[target_filter]
+                            area_candidate = area[target_filter_cpu]
                         temp_floating_area, temp = area_candidate.min(dim=0)
                         if temp_floating_area < t_floating_area:
-                            t_floating_mask = mask[target_filter][temp].squeeze(0)
-                            t_floating_combo = combo[target_filter][temp]
+                            t_floating_mask = mask[target_filter_cpu][temp].squeeze(0)
+                            t_floating_combo = combo[target_filter_cpu][temp]
                             t_floating_area = temp_floating_area
                             if self.color:
-                                t_floating_RGB_painting = RGB_painting[target_filter][temp]
+                                t_floating_RGB_painting = RGB_painting[target_filter_cpu][temp]
                 
                 # baseline_substraction
                 if baseline_subtraction:
@@ -725,34 +727,36 @@ class MPA_agent(robot):
                 
                 # update non-target records
                 wrong_filter = ~filters[0]
+                wrong_filter_cpu = wrong_filter.cpu()
                 if acc[0] != 1:
                     if distributed_area:
-                        area_candidate = area[:, -1][wrong_filter]
+                        area_candidate = area[:, -1][wrong_filter_cpu]
                     else:
-                        area_candidate = area[wrong_filter]
+                        area_candidate = area[wrong_filter_cpu]
                     temp_floating_area, temp = area_candidate.min(dim=0)
                     if temp_floating_area < floating_area:
-                        floating_mask = mask[wrong_filter][temp].squeeze(0)
-                        floating_combo = combo[wrong_filter][temp]
+                        floating_mask = mask[wrong_filter_cpu][temp].squeeze(0)
+                        floating_combo = combo[wrong_filter_cpu][temp]
                         floating_area = temp_floating_area
                         if self.color:
-                            floating_RGB_painting = RGB_painting[wrong_filter][temp]
+                            floating_RGB_painting = RGB_painting[wrong_filter_cpu][temp]
                 
                 # update target records
                 if t_atk:
                     if acc[1] != 0:
                         target_filter = filters[1]
+                        target_filter_cpu = target_filter.cpu()
                         if distributed_area:
-                            area_candidate = area[:, -1][target_filter]
+                            area_candidate = area[:, -1][target_filter_cpu]
                         else:
-                            area_candidate = area[target_filter]
+                            area_candidate = area[target_filter_cpu]
                         temp_floating_area, temp = area_candidate.min(dim=0)
                         if temp_floating_area < t_floating_area:
-                            t_floating_mask = mask[target_filter][temp].squeeze(0)
-                            t_floating_combo = combo[target_filter][temp]
+                            t_floating_mask = mask[target_filter_cpu][temp].squeeze(0)
+                            t_floating_combo = combo[target_filter_cpu][temp]
                             t_floating_area = temp_floating_area
                             if self.color:
-                                t_floating_RGB_painting = RGB_painting[target_filter][temp]
+                                t_floating_RGB_painting = RGB_painting[target_filter_cpu][temp]
                 
                 # baseline subtraction
                 if baseline_subtraction:
