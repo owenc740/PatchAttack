@@ -64,6 +64,20 @@ Tested on Windows 11 with an NVIDIA GPU with CUDA support. The code requires a C
 New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name "LongPathsEnabled" -Value 1 -PropertyType DWORD -Force
 ```
 
+
+# Transferability Experiment
+ 
+We added an experiment to test whether a TPA adversarial image crafted against ResNet50 transfers to other architectures. The adversarial image (targeting class 723, pinwheel) was fed through DenseNet121, MobileNetV2, and VGG19 without modification.
+ 
+| Model | Prediction | Target Conf (723) | GT Conf (547) |
+|-------|-----------|-------------------|---------------|
+| ResNet50 (target) | electric locomotive (547) | 0.00% | 98.73% |
+| DenseNet121 | electric locomotive (547) | 0.00% | 93.24% |
+| MobileNetV2 | electric locomotive (547) | 0.00% | 98.44% |
+| VGG19 | Gila monster (45) | 0.00% | 0.00% |
+ 
+**Finding:** TPA adversarial images do not transfer across architectures. VGG19 misclassified as class 45 (Gila monster), one of the two classes in the demo texture dictionary, because the texture dictionary is built from VGG19's own Gram matrices.
+
 ## Usage
 
 # Data
