@@ -9,7 +9,7 @@ A modified fork of the code for the 2020 ECCV paper, *"PatchAttack: A Black-box 
  
 This fork includes compatibility fixes for modern Python/PyTorch versions and a transferability experiment testing whether adversarial examples crafted against one architecture fool others.
 
-We provide code for four patch-based attacks on ImageNet using PyTorch:
+Code provided for four patch-based attacks on ImageNet using PyTorch:
 - **TPA** (Texture-based Patch Attack) - RL-optimized textured patches using a class-specific texture dictionary
 - **MPA** (Monochrome Patch Attack) - RL-optimized solid-colored rectangular patches
 - **HPA** (Hastings Patch Attack) - Metropolis-Hastings random sampling with monochrome patches (baseline)
@@ -67,7 +67,7 @@ New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name
 
 # Transferability Experiment
  
-We added an experiment to test whether a TPA adversarial image crafted against ResNet50 transfers to other architectures. The adversarial image (targeting class 723, pinwheel) was fed through DenseNet121, MobileNetV2, and VGG19 without modification.
+Added an experiment to test whether a TPA adversarial image crafted against ResNet50 transfers to other architectures. The adversarial image (targeting class 723, pinwheel) was fed through DenseNet121, MobileNetV2, and VGG19 without modification.
  
 | Model | Prediction | Target Conf (723) | GT Conf (547) |
 |-------|-----------|-------------------|---------------|
