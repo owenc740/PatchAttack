@@ -10,17 +10,17 @@ A modified fork of the code for the 2020 ECCV paper, *"PatchAttack: A Black-box 
 This fork includes compatibility fixes for modern Python/PyTorch versions and a transferability experiment testing whether adversarial examples crafted against one architecture fool others.
 
 We provide code for four patch-based attacks on ImageNet using PyTorch:
-- **TPA** (Texture-based Patch Attack) — RL-optimized textured patches using a class-specific texture dictionary
-- **MPA** (Monochrome Patch Attack) — RL-optimized solid-colored rectangular patches
-- **HPA** (Hastings Patch Attack) — Metropolis-Hastings random sampling with monochrome patches (baseline)
-- **AP** (Adversarial Patch) — White-box gradient-crafted patches (baseline)
+- **TPA** (Texture-based Patch Attack) - RL-optimized textured patches using a class-specific texture dictionary
+- **MPA** (Monochrome Patch Attack) - RL-optimized solid-colored rectangular patches
+- **HPA** (Hastings Patch Attack) - Metropolis-Hastings random sampling with monochrome patches (baseline)
+- **AP** (Adversarial Patch) - White-box gradient-crafted patches (baseline)
 Each attack can be run through the `PatchAttack_tutorial.ipynb` notebook.
 
 # Step by Step Guide
  
 1. Install the packages listed in the Software Installation section (see below).
 2. Download the text file of [ImageNet_clsidx_to_labels](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a) and save it as `imagenet1000_clsidx_to_labels.txt` in the root directory.
-3. For TPA with all 1000 classes: download [TextureDict_ImageNet_0.zip](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/cyang76_jh_edu/EcKGvE7jQVJMuMxqdbSSYdEB2VLbcE24m6YQDAqb2yR9KA?e=P8RJJm) and [TextureDict_ImageNet_1.zip](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/cyang76_jh_edu/EXsnVi0FETZJuf1v9CLfu6YByb79RO_vj3-5BV_RY5Wzdg?e=lRUAj1), unzip and merge into a single `TextureDict_ImageNet` folder. For the tutorial demo, this is not required — demo dictionaries for classes 45 and 723 are included in the repo.
+3. For TPA with all 1000 classes: download [TextureDict_ImageNet_0.zip](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/cyang76_jh_edu/EcKGvE7jQVJMuMxqdbSSYdEB2VLbcE24m6YQDAqb2yR9KA?e=P8RJJm) and [TextureDict_ImageNet_1.zip](https://livejohnshopkins-my.sharepoint.com/:u:/g/personal/cyang76_jh_edu/EXsnVi0FETZJuf1v9CLfu6YByb79RO_vj3-5BV_RY5Wzdg?e=lRUAj1), unzip and merge into a single `TextureDict_ImageNet` folder. For the tutorial demo, this is not required - demo dictionaries for classes 45 and 723 are included in the repo.
 4. Open the `PatchAttack_tutorial.ipynb` notebook and run the cells in order.
 
 
@@ -49,15 +49,15 @@ pip install torch torchvision easydict opencv-python matplotlib scikit-learn tqd
  
 The following changes were made to support modern Python/PyTorch/kornia versions:
  
-- **Windows path separators** — Added `.replace('\\', '/')` before `.split('/')` calls in `PatchAttack_config.py` to handle Windows backslash paths.
-- **Windows long path support** — Added `\\?\` prefix to `os.makedirs` calls in `PatchAttack_attackers.py` to bypass the 260-character path limit.
-- **PyTorch device mismatch** — Added `.cpu()` to boolean filter tensors in `PatchAttack_agents.py` where `area` (CPU) was being indexed by GPU tensors.
-- **PyTorch `torch.load` security** — Added `weights_only=False` to `torch.load` calls in `PatchAttack_attackers.py` (PyTorch 2.6+ defaults to `weights_only=True`).
-- **kornia API changes** — Replaced `kornia.translate` with `kornia.geometry.transform.translate` in `PatchAttack_attackers.py`.
+- **Windows path separators** - Added `.replace('\\', '/')` before `.split('/')` calls in `PatchAttack_config.py` to handle Windows backslash paths.
+- **Windows long path support** - Added `\\?\` prefix to `os.makedirs` calls in `PatchAttack_attackers.py` to bypass the 260-character path limit.
+- **PyTorch device mismatch** - Added `.cpu()` to boolean filter tensors in `PatchAttack_agents.py` where `area` (CPU) was being indexed by GPU tensors.
+- **PyTorch `torch.load` security** - Added `weights_only=False` to `torch.load` calls in `PatchAttack_attackers.py` (PyTorch 2.6+ defaults to `weights_only=True`).
+- **kornia API changes** - Replaced `kornia.translate` with `kornia.geometry.transform.translate` in `PatchAttack_attackers.py`.
 
 # System Requirements
  
-Tested on Windows 11 with an NVIDIA GPU with CUDA support. The code requires a CUDA-capable GPU — all models and tensors are moved to GPU via `.cuda()` calls.
+Tested on Windows 11 with an NVIDIA GPU with CUDA support. The code requires a CUDA-capable GPU - all models and tensors are moved to GPU via `.cuda()` calls.
  
 **Windows users:** Enable long path support via registry to avoid path length errors:
 ```powershell
@@ -125,4 +125,4 @@ Original paper:
  
 # License
  
-This project is licensed under the MIT License — see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
