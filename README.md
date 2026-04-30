@@ -8,14 +8,14 @@
 This is the code used in the paper [PatchAttack: A Black-box Texture-based Attack with Reinforcement Learning](https://arxiv.org/abs/2004.05682) by Chenglin Yang, Adam Kortylewski, Cihang Xie, Yinzhi Cao, and Alan Yuille (2020). This GitHub repository is mainly sourced from their respective [GitHub repository](https://github.com/Chenglin-Yang/PatchAttack).
 
 ## Requirements
-+ python 3.6
-+ pytorch 1.4.0
++ python 3.14.2 (original uses 3.6)
++ pytorch 2.10.0 (original uses 1.4.0)
 + easydict
 + opencv
 + matplotlib
 + scikit-learn
 + tqdm
-+ kornia 0.2.2
++ kornia 0.8.2 (original uses 0.2.2)
 + jupyter (for PatchAttack_tutorial.ipynb)
 
 ## Usage
